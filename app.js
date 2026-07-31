@@ -10,6 +10,25 @@ app.get("/otraruta", (req, res) => {
         <h2> End point con res.send </h2>`)
 })
 
+app.get("/ruta2", (req, res)=>{
+    res.json({"nombre": "Kevin", "Apellido": "Rondon", "cargo": "Aprendiz" })
+})
+
+app.get("/ruta3/:aprendiz/:otrodato", (req, res)=>{ 
+    const dato_aprendiz = req.params.aprendiz
+    const otrodato = req.params.otrodato
+    res.json({"Nombre": dato_aprendiz, "Otro": otrodato})
+})
+
+app.get("/ruta4", (req, res) => {
+    const orden = req.query.orden || "sin ordenar"
+    const pagina = req.query.pagina || 1 
+    res.send(`<h1>Listado aprendices</h1>
+        <p> El listado esta en orden ${orden}</p>
+        <p>Pagina ${pagina}</p>´`)
+}
+)
+
 app.listen(3000, () => {
   console.log(`Servidor en funcionamiento en el puerto: http://localhost:3000`);
 });
