@@ -1,0 +1,12 @@
+iniciar servidor y se vean cambios segun el codigo: 
+node --watcfg app.js
+
+
+Comando git 
+ver configuracion
+git config --global --list
+git config --list
+
+Borrar las configuraciones
+git config --global --unset user.name
+git config --global --unset user.email
