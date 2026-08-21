@@ -2,7 +2,7 @@ const express = require("express")
 const app = express()
 
 app.get("/", (_, res) => {
-  res.send(`Hola, estoy aprendiendo express, ficha 3407181 ADSO en el sena`, );
+  res.send(`API Rest`, );
 });
 
 app.listen(3000, () => {
