@@ -7,6 +7,7 @@ const puerto = process.env.PUERTO || 3030;
 
 //uso de middwealer body-parse
 app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 app.get("/", (_, res) => {
   res.send(`Hola, estoy aprendiendo express, ficha 3407181 ADSO en el sena`, );
@@ -40,8 +41,11 @@ app.post("/ruta2", (req, res) =>{
     const todosDatos = req.body
     const name = req.body.nombre
     const lastname = req.body.cargo
-    res.status(201).json({Datos: todosDatos, nombre: name, cargo: lastname})
+    res.status(201).json({Datos: todosDatos, nombre: name, 
+        cargo: lastname})
 })
+
+
 
 // Endpoint de login con validaciones
 app.post("/login", (req, res) => {
@@ -49,7 +53,7 @@ app.post("/login", (req, res) => {
   
   // Validar datos faltantes
   if (!usuario && !perfil && !contraseña) {
-    return res.status(400).json({
+    return res.status(400).json({  
       mensaje: "No se enviaron datos. Por favor proporcione usuario, perfil y contraseña."
     });
   }
@@ -90,6 +94,15 @@ app.post("/login", (req, res) => {
     });
   }
 });
+
+//endpoint para enviar datos fromdata
+app.post("/formulario", (req, res) =>{
+    const datosForm = req.body
+    const miNombre = req.body.nombre1
+    const miApellido = req.body.apellido2
+    const miCargo = req.body.cargo3
+    res.status(200).json({Mensaje: "Datos recibidos", nombre: miNombre, apellido: miApellido, cargo: miCargo})
+})
 
 
 app.listen(3000, () => {
